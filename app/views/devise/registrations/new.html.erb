@@ -1,29 +1,98 @@
-<h2>Sign up</h2>
+<style>
+    body {
+      background: #fff;
+    }
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    .input-field input[type=date]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=email]:focus + label,
+    .input-field input[type=password]:focus + label {
+      color: #29b6f6;
+    }
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    .input-field input[type=date]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=email]:focus,
+    .input-field input[type=password]:focus {
+      border-bottom: 2px solid #e91e63;
+      box-shadow: none;
+    }
+</style>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+  <div class="section"></div>
+  <main>
+    <center>
+      <div class="section"></div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+      <div class="section"></div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <div class="container">
+        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
 
-<%= render "devise/shared/links" %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "col s12"}) do |f| %>
+
+            <div class='row'>
+              <div class='col s12'>
+                <h5 class="indigo-text">SIGN UP</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <%= render 'shared/error_message', object: f.object %>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <%= f.text_field :full_name, class: 'validate' %>
+                <label for='full_name'>Full Name</label>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <%= f.text_field :sch_id, class: 'validate' %>
+                <label for='sch_id'>School ID</label>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <%= f.email_field :email, class: 'validate' %>
+                <label for='email'>Email</label>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+              <%= f.password_field :password, autocomplete: "off", class: 'validate' %>
+              <label for='password'>Enter your password
+                 <% if @minimum_password_length %>
+               <small>(<%= @minimum_password_length %> characters minimum)</small>
+              <% end %>
+              </label>
+              </div>
+              <div class='input-field col s12'>
+                 <%= f.password_field :password_confirmation, autocomplete: "off", class: 'validate' %>
+                <label for='password_confirmation'>
+                  Password confirmation
+                </label>
+              </div>
+            </div>
+            <center>
+              <div class='row'>
+                <%= f.submit "Sign up", class: 'col s12 btn btn-md waves-effect indigo' %>
+              </div>
+            </center>
+          <% end %>
+        </div>
+      </div>
+      Already have an account? <%= render "devise/shared/links" %>
+    </center>
+
+    <div class="section"></div>
+    <div class="section"></div>
+  </main>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
