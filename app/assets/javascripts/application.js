@@ -13,3 +13,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+
+// Initialize collapse button
+$(".button-collapse").sideNav();
