@@ -17,3 +17,8 @@
 
 // Initialize collapse button
 $(".button-collapse").sideNav();
+
+// Initialize modal 
+$(document).ready(function() {
+    $('.modal').modal();
+});

@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :sch_id, uniqueness: true
   validates_length_of :sch_id, is: 13
   validates :full_name, length: { maximum: 100 }
+
+  has_many :topics, dependent: :destroy
 end

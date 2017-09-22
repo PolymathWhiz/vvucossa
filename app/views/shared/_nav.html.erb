@@ -1,14 +1,17 @@
  <nav class="blue-grey darken-3" role="navigation">
     <div class="nav-wrapper container">
-      <%= link_to 'Talkstack', root_path, class: 'brand-logo', id: 'logo-container' %>
+      <%= link_to 'Slick', root_path, class: 'brand-logo', id: 'logo-container' %>
       <ul class="right hide-on-med-and-down">
        <% if user_signed_in? %>
-         <li>
+        <li>
+            <%= link_to 'Profile', user_path(current_user) %>
+        </li>
+        <li>
           <%= link_to 'Settings', edit_user_registration_path %>
         </li>
 
         <li>
-          <%= link_to 'Logout', new_user_registration_path %>
+          <a href="<%= destroy_user_session_path %>" data-method="delete" rel="nofollow" >Logout </a>
         </li>
        <% else %>
         <li>
@@ -23,13 +26,26 @@
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-       <li>
+       <% if user_signed_in? %>
+        <li>
+            <%= link_to 'Profile', user_path(current_user) %>
+        </li>
+         <li>
+          <%= link_to 'Settings', edit_user_registration_path %>
+        </li>
+
+        <li>
+          <a href="<%= destroy_user_session_path %>" data-method="delete" rel="nofollow" >Logout </a>
+        </li>
+       <% else %>
+        <li>
           <%= link_to 'Login', new_user_session_path %>
         </li>
 
         <li>
           <%= link_to 'Signup', new_user_registration_path %>
         </li>
+       <% end %>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
