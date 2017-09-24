@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   devise_scope :users do
     resources :users, only: [:show]    
   end
-  resources :topics
+  resources :topics do
+    resources :comments
+  end
 end

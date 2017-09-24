@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require parsley
  *= require_self
  */
 
@@ -18,6 +19,8 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    /* font-size: 14px; */
 }
 
 main {

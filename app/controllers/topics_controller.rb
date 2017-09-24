@@ -6,9 +6,9 @@ class TopicsController < ApplicationController
   #   @topic = Topic.new
   # end
 
-  def index
-    @topics = Topic.all
-  end
+  # def index
+  #   @topics = Topic.all
+  # end
 
   def show; end
 
@@ -17,8 +17,9 @@ class TopicsController < ApplicationController
   def create
     @topic = current_user.topics.build(topic_params)
     respond_to do |format|
-      if @topic.save 
-        format.js { render js: "Materialize.toast('Topic created successfully!', 3000);"}
+      if @topic.save
+        # redirect_back(fallback_location: fallback_location) 
+        format.js { render js: "Materialize.toast('Topic created successfully!', 3000); location.reload();"}
       else
         format.js { render js: "Materialize.toast('Unable to create topic!', 3000);"}
       end

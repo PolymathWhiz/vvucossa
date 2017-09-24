@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def show
     @topic = Topic.new
+    @user_topics = @user.topics
+    # @comments = 
   end
 
   private

@@ -1,0 +1,8 @@
+.header {
+    font-size: 28px;
+}
+
+.parsley-required,
+.parsley-maxlength {
+    color: red;
+}

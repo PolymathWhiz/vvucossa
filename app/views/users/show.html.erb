@@ -19,17 +19,36 @@
     <div class="section"></div>
     <div class="section"></div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col s12">
-          <h5 class="base_color">Recent Topics</h5>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h5 class="base_color">Your recent topics</h5>
+        <div class="divider"></div>
       </div>
     </div>
 
+  <div class="row">
+    <% @user_topics.each do |topic| %>
+      <div class="col s12 m4">
+        <div class="card darken-1">
+          <div class="card-content black-text">
+            <h2 class="card-title truncate" title="<%= topic.title%>"><%= topic.title %></h2>
+            <div class="divider"></div>
+            <p style="margin-top: 30px;"><%= topic.description %></p>
+          </div>
+          <div class="card-action">
+            <span><%= pluralize(@comments, "comment")%></span>
+            <%= link_to 'View', topic_path(topic), class: 'right' %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
-<!-- Modal structure -->
-<%= form_for(@topic, url: topics_path, remote:true) do |f| %>
+
+<!-- Modal -->
+<%= form_for(@topic, url: topics_path, remote:true,  html:{ 'data-parsley-validate' => '' }) do |f| %>
 <div id="topicmodal" class="modal">
   <div class="modal-content">
     <h5>
@@ -39,24 +58,30 @@
     
         <div class='row'>
           <div class='input-field col s12'>
-            <%= f.text_field :title, class: 'validate' %>
+            <%= f.text_field :title, required: true, 'data-parsley-minlength': '1', 'data-parsley-maxlength': '140','data-parsley-trigger': 'blur'  %>
             <label for='title'>Title</label>
           </div>
         </div>
 
         <div class='row'>
           <div class='input-field col s12'>
-            <%= f.text_area :description, class: 'validate', placeholder: 'Write something nice...' %>
+            <%= f.text_area :description, class: 'materialize-textarea', placeholder: 'Write something nice...', required: true, 'data-parsley-minlength': '1', 'data-parsley-maxlength': '140','data-parsley-trigger': 'blur'
+             %>
             <label for='description'>Description</label>
           </div>
         </div>
 
   </div>
   <div class="modal-footer">
-    <a href="" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-    <%= f.submit "Post", class: 'modal-action waves-effect waves-green btn-flat' %>
-    <%#= button_tag "Post2", data: { disable_with: "Please wait..." }, class: 'modal-action waves-effect waves-green btn-flat' %>
+    <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    <%= f.submit "Post", class: 'modal-action waves-effect waves-light btn-flat' %>
   </div>
 </div>
 
 <% end %>
+
+<div class="section"></div>
+<div class="section"></div>
+<div class="section"></div>
+<div class="section"></div>
+<div class="section"></div>

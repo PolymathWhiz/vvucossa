@@ -10,4 +10,5 @@ class User < ApplicationRecord
   validates :full_name, length: { maximum: 100 }
 
   has_many :topics, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
